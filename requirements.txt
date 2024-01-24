@@ -21,5 +21,5 @@ geopy
 basemap
 basemap-data-hires
 peacasso
-git+https://github.com/roy-saurabh/lida-custom.git#egg=lida-custom
-git+https://github.com/roy-saurabh/llmx-custom.git#egg=llmx-custom
+git+ssh://git@github.com/roy-saurabh/lida-custom.git#egg=lida-custom
+git+ssh://git@github.com/roy-saurabh/llmx-custom.git#egg=llmx-custom
