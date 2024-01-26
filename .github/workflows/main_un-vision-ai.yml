@@ -28,20 +28,20 @@ jobs:
           source venv/bin/activate
       
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip -r release.zip . -x "venv/*"
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v3
         with:
           name: python-app
-          path: |
-            release.zip
-            !venv/
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -58,9 +58,12 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
+
       - name: Run lida ui
         run: |
+          python -m venv venv
           source venv/bin/activate
+          pip install -r requirements.txt
           lida ui --port=8080
 
       - name: 'Deploy to Azure Web App'
