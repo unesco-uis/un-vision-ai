@@ -58,8 +58,11 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
+      - name: Run lida ui
+        run: |
+          source venv/bin/activate
+          lida ui --port=8080
 
-      
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
