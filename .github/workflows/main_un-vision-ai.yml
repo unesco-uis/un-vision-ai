@@ -71,6 +71,11 @@ jobs:
           pip list
 
       - name: Run lida ui
+        env:
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+          AZURE_OPENAI_BASE: ${{ secrets.AZURE_OPENAI_BASE }}
+          AZURE_OPENAI_VERSION: ${{ secrets.AZURE_OPENAI_VERSION }}
+          AZURE_OPENAI_DEPLOYMENT: ${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
         run: |
           source venv/bin/activate
           lida ui --port=8080
