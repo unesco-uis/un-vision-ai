@@ -1,3 +1,5 @@
+git+https://github.com/roy-saurabh/lida.git
+git+https://github.com/roy-saurabh/llmx.git
 pydantic
 uvicorn
 typer
@@ -21,5 +23,3 @@ geopy
 basemap
 basemap-data-hires
 peacasso
-git+https://git@github.com/roy-saurabh/lida.git#egg=lida
-git+https://git@github.com/roy-saurabh/llmx.git#egg=llmx
