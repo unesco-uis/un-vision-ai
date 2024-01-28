@@ -55,7 +55,6 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      # Ensure that all required secrets are set in your GitHub repository
       - name: Set up Environment Variables
         run: |
           echo "AZURE_OPENAI_API_KEY=${{ secrets.AZURE_OPENAI_API_KEY }}" >> $GITHUB_ENV
