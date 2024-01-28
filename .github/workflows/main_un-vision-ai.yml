@@ -27,7 +27,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
+        
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
@@ -55,9 +55,16 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
+      # Ensure that all required secrets are set in your GitHub repository
+      - name: Set up Environment Variables
+        run: |
+          echo "AZURE_OPENAI_API_KEY=${{ secrets.AZURE_OPENAI_API_KEY }}" >> $GITHUB_ENV
+          echo "AZURE_OPENAI_BASE=${{ secrets.AZURE_OPENAI_BASE }}" >> $GITHUB_ENV
+          echo "AZURE_OPENAI_VERSION=${{ secrets.AZURE_OPENAI_VERSION }}" >> $GITHUB_ENV
+          echo "AZURE_OPENAI_DEPLOYMENT=${{ secrets.AZURE_OPENAI_DEPLOYMENT }}" >> $GITHUB_ENV
+
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
-        id: deploy-to-webapp
         with:
           app-name: 'un-vision-ai'
           slot-name: 'Production'
