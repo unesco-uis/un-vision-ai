@@ -1,5 +1,5 @@
-git+https://github.com/roy-saurabh/lida.git
-git+https://github.com/roy-saurabh/llmx.git
+git+https://github.com/roy-saurabh/un-vis-app.git
+git+https://github.com/roy-saurabh/un-vis-lib.git
 pydantic
 uvicorn
 typer
